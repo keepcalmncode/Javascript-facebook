@@ -2,6 +2,10 @@ var database = [
 	{
 		username: "mark",
 		password: "privacy"
+	},
+	{
+		username: "stark",
+		password: "infinity"
 	}
 ];
 
@@ -19,8 +23,21 @@ var newsFeed = [
 var userNamePrompt = prompt("What's your username");
 var passwordPrompt = prompt("What's your password");
 
+function isUserValid(user, pass)
+{
+	for (var i = 0; i < database.length; i++) 
+	{
+		if (database[i].username === user &&
+		 	database[i].password === pass)
+		{
+			return true;
+	    }		 
+	}
+	return false;
+}
+
 function signIn(user, pass) {
-	if (user === database[0].username && pass === database[0].password){
+	if (isUserValid(user, pass))	{
 		console.log(newsFeed);
 	}
 	else{
